@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFT Collection</title>
+    <style>
+        .nft {
+            display: inline-block;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            width: 200px;
+        }
+        img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>NFT Collection</h1>
+    <form method="POST">
+        <label for="ethereum_address">Enter your Ethereum address:</label>
+        <input type="text" name="ethereum_address" id="ethereum_address" required>
+        <button type="submit">Load Collection</button>
+    </form>
+    {{ if . }}
+        <div class="nft-collection">
+            {{ range . }}
+                <div class="nft">
+                    <img src="{{ .Image }}" alt="{{ .Title }}">
+                    <h2>{{ .Title }}</h2>
+                    <p>{{ .Description }}</p>
+                </div>
+            {{ end }}
+        </div>
+    {{ end }}
+</body>
+</html>
